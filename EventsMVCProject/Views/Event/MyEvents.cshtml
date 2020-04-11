@@ -1,0 +1,58 @@
+﻿@model EventsMVCProject.ViewModels.UpcomingPassedEventsModel
+
+@{
+    ViewBag.Title = "PublicEvents";
+}
+
+<h2>getAllEvents</h2>
+<h2 align="center">All Events</h2>
+<h4>Passed Events</h4>
+<table class="table">
+    @if (Model.PassedEvents.Any())
+    {
+        <tr>
+            <th>Title Name </th>
+        </tr>
+        foreach (var item in Model.PassedEvents)
+        {
+            string titleName = item.Title + "";
+            <tr>
+                <td>
+                    @Html.ActionLink(titleName, "getDetailsOfEvent", "Event", new { id = item.Id }, null)
+                </td>
+
+            </tr>
+
+        }
+    }
+    else
+    {
+        <h6>No Passed events</h6>
+    }
+</table>
+
+<h4>Upcoming Events</h4>
+<table class="table">
+    @if (Model.FutureEvents.Any())
+    {
+        <tr>
+            <th>Title Name </th>
+        </tr>
+        foreach (var item in Model.FutureEvents)
+        {
+            string titleName = item.Title + "";
+            <tr>
+                <td>
+
+                    @Html.ActionLink(titleName, "getDetailsOfEvent", "Event", new { id = item.Id }, null)
+                </td>
+
+            </tr>
+        }
+    }
+    else
+    {
+        <h6>No Upcoming events</h6>
+    }
+</table>
+

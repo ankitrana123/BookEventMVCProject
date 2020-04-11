@@ -12,6 +12,11 @@ namespace EventsMVCProject
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapRoute(
+                name: "Event",
+                url: "{controller}/{action}",
+                defaults: new { controller = "Event", action = "getAllPublicEvents" }
+            );
 
             routes.MapRoute(
                 name: "Default",
